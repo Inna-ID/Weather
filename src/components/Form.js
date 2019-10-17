@@ -5,7 +5,7 @@ class Form extends Component {
         return(
             <form onSubmit={this.props.weatherMethod}>
                 <input type="text" name="city" placeholder="City"/>
-                <button>Get the weather</button>
+                <button className="btn btn-danger">Get the weather</button>
             </form>
         )
     }

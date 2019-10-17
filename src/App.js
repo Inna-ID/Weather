@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
-import Info from './components/Info';
+import Titles from './components/Titles';
 import Form from './components/Form';
 import Weather from './components/Weather';
-import './App.css';
+//import './App.css';
 
 const apiKey = 'e1df1fc3a72e0ced10d2e8bac9563a73';
 
@@ -13,6 +12,7 @@ class App extends Component {
     country: undefined,
     temperature: undefined,
     humidity: undefined,
+    description: undefined,
     sunrise: undefined,
     sunset: undefined,
     error: undefined
@@ -37,11 +37,20 @@ class App extends Component {
         country: data.sys.country,
         temperature: data.main.temp,
         humidity: data.main.humidity,
+        description: data.weather[0].description,
         sunrise: data.sys.sunrise,
         sunset: sunset_date,
+        error: ''
       });
     } else {
       this.setState({
+        city: undefined,
+        country: undefined,
+        temperature: undefined,
+        humidity: undefined,
+        description: undefined,
+        sunrise: undefined,
+        sunset: undefined,
         error: data.message
       });
     }
@@ -49,18 +58,25 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Info/>
-        <Form weatherMethod={this.gettingWeather}/>
-        <Weather
-            city={this.state.city}
-            country={this.state.country}
-            temperature={this.state.temperature}
-            humidity={this.state.humidity}
-            sunrise={this.state.sunrise}
-            sunset={this.state.sunset}
-            error={this.state.error}
-        />
+      <div className="wrapper">
+        <div className="sky">
+        <div className="stars"></div>
+          <div className="mountains">
+          <div className="container">
+                <Titles/>
+                <Form weatherMethod={this.gettingWeather}/>
+                <Weather
+                    city={this.state.city}
+                    country={this.state.country}
+                    temperature={this.state.temperature}
+                    humidity={this.state.humidity}
+                    sunrise={this.state.sunrise}
+                    sunset={this.state.sunset}
+                    error={this.state.error}
+                />
+          </div>
+        </div>
+        </div>
       </div>
     );
   }
