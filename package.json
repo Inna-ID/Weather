@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://Inna-ID.github.io/Weather",
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "gh-pages": "^2.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
