@@ -4,12 +4,13 @@ const Weather = props => (
         <div className="weather-info">
             {props.city ?
             <React.Fragment>
-            <p>Location: {props.city}, {props.country}</p>
-            <p>Temperature: {props.temperature}°</p>
-            <p>Humidity: {props.humidity}%</p>
-            <p>Sunrise: {props.sunrise}</p>
-            <p>Sunset: {props.sunset}</p>
-
+            <p><span className="val">Location:</span> {props.city}, {props.country}</p>
+            <p><span className="val">Temperature:</span> {props.temperature}°</p>
+            <p><span className="val">Humidity:</span> {props.humidity}%</p>
+            <p><span className="val">Cloudiness:</span> {props.cloudiness}</p>
+            <p><span className="val">Wind speed:</span> {props.windSpeed} m/s</p>
+            <p><span className="val">Sunrise:</span> {props.sunrise}</p>
+            <p><span className="val">Sunset:</span> {props.sunset}</p>
             </React.Fragment> :
             <React.Fragment>
                 <p>{props.error}</p>

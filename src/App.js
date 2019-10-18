@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Titles from './components/Titles';
 import Form from './components/Form';
 import Weather from './components/Weather';
-//import './App.css';
+import './App.css';
 
 const apiKey = 'e1df1fc3a72e0ced10d2e8bac9563a73';
 
@@ -12,9 +12,10 @@ class App extends Component {
     country: undefined,
     temperature: undefined,
     humidity: undefined,
-    description: undefined,
+    cloudiness: undefined,
     sunrise: undefined,
     sunset: undefined,
+    windSpeed: undefined,
     error: undefined
   }
 
@@ -27,19 +28,35 @@ class App extends Component {
     console.log(data);
 
     if(data.name) {
-      var sunset = data.sys.sunset;
-      var date = new Date();
-      date.setTime(sunset);
-      var sunset_date = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+      let dateSunrise = new Date();
+      let dateSunset = new Date();
+      dateSunrise.setTime(data.sys.sunrise * 1000);
+      dateSunset.setTime(data.sys.sunset * 1000);
 
-      this.setState({        
+      const setZero = time => (
+        time < 10 ? '0' + time : time
+      )
+      let sunriseHours = setZero(dateSunrise.getHours());
+      let sunriseMinutes = setZero(dateSunrise.getMinutes());
+      let sunriseSeconds = setZero(dateSunrise.getSeconds());
+      let sunriseTime = `${sunriseHours} : ${sunriseMinutes} : ${sunriseSeconds}`;
+
+      let sunsetHours = setZero(dateSunset.getHours());
+      let sunsetMinutes = setZero(dateSunset.getMinutes());
+      let sunsetSeconds = setZero(dateSunset.getSeconds());
+      let sunsetTime = `${sunsetHours} : ${sunsetMinutes} : ${sunsetSeconds}`;
+      
+
+
+      this.setState({
         city: data.name,
         country: data.sys.country,
         temperature: data.main.temp,
         humidity: data.main.humidity,
-        description: data.weather[0].description,
-        sunrise: data.sys.sunrise,
-        sunset: sunset_date,
+        cloudiness: data.weather[0].description,
+        sunrise: sunriseTime,
+        sunset: sunsetTime,
+        windSpeed: data.wind.speed,
         error: ''
       });
     } else {
@@ -48,9 +65,10 @@ class App extends Component {
         country: undefined,
         temperature: undefined,
         humidity: undefined,
-        description: undefined,
+        cloudiness: undefined,
         sunrise: undefined,
         sunset: undefined,
+        windSpeed: undefined,
         error: data.message
       });
     }
@@ -58,11 +76,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <div className="sky">
+      <div className="wrapper sky">
         <div className="stars"></div>
-          <div className="mountains">
-          <div className="container">
+        <div className="mountains"></div>
+        <div className="main">
+        <div className="container">
                 <Titles/>
                 <Form weatherMethod={this.gettingWeather}/>
                 <Weather
@@ -70,12 +88,13 @@ class App extends Component {
                     country={this.state.country}
                     temperature={this.state.temperature}
                     humidity={this.state.humidity}
+                    cloudiness={this.state.cloudiness}
                     sunrise={this.state.sunrise}
                     sunset={this.state.sunset}
+                    windSpeed={this.state.windSpeed}
                     error={this.state.error}
                 />
           </div>
-        </div>
         </div>
       </div>
     );
