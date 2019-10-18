@@ -47,7 +47,6 @@ class App extends Component {
       let sunsetTime = `${sunsetHours} : ${sunsetMinutes} : ${sunsetSeconds}`;
       
 
-
       this.setState({
         city: data.name,
         country: data.sys.country,
