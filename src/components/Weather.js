@@ -12,6 +12,7 @@ const Weather = props => (
             <p><span className="key">Humidity:</span> {props.humidity}%</p>
             <p><span className="key">Cloudiness:</span> {props.cloudiness}</p>
             <p><span className="key">Wind speed:</span> {props.windSpeed} m/s</p>
+            <p><span className="key">Wind direction:</span> {props.windDeg}</p>
             <p><span className="key">Sunrise:</span> {props.sunrise}</p>
             <p><span className="key">Sunset:</span> {props.sunset}</p>
             </React.Fragment> :

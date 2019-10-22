@@ -13,9 +13,11 @@ class App extends Component {
     temperature: undefined,
     humidity: undefined,
     cloudiness: undefined,
+    icon: undefined,
     sunrise: undefined,
     sunset: undefined,
     windSpeed: undefined,
+    windDeg: undefined,
     error: undefined
   }
 
@@ -28,6 +30,22 @@ class App extends Component {
     console.log(data);
 
     if(data.name) {
+      ///wind derection
+      const setWidDerection = deg => {
+        switch(true) {
+          case (deg >= 350 && deg <= 10): return 'Eastern ⭠';
+          case (deg > 10 && deg < 80): return 'Northeastern ⭩';
+          case (deg >= 80 && deg <= 100): return 'Northern ⭣';
+          case (deg > 100 && deg < 170): return 'Northwestern ⭨';
+          case (deg >= 170 && deg <= 190): return 'Western ⭢';
+          case (deg > 190 && deg < 260): return'Southwestern ⭧';
+          case (deg >= 260 && deg <= 280): return 'Southern ⭡';
+          case (deg > 280 && deg < 350): return 'Southeastern ⭦';
+          default: return '';
+        }
+      }
+
+      // sunrise and sunset
       let dateSunrise = new Date();
       let dateSunset = new Date();
       dateSunrise.setTime(data.sys.sunrise * 1000);
@@ -35,7 +53,8 @@ class App extends Component {
 
       const setZero = time => (
         time < 10 ? '0' + time : time
-      )
+      )     
+
       let sunriseHours = setZero(dateSunrise.getHours());
       let sunriseMinutes = setZero(dateSunrise.getMinutes());
       let sunriseSeconds = setZero(dateSunrise.getSeconds());
@@ -53,9 +72,11 @@ class App extends Component {
         temperature: data.main.temp,
         humidity: data.main.humidity,
         cloudiness: data.weather[0].description,
+        icon: data.weather[0].icon,
         sunrise: sunriseTime,
         sunset: sunsetTime,
         windSpeed: data.wind.speed,
+        windDeg: setWidDerection(data.wind.deg),
         error: ''
       });
     } else {
@@ -65,9 +86,11 @@ class App extends Component {
         temperature: undefined,
         humidity: undefined,
         cloudiness: undefined,
+        icon: undefined,
         sunrise: undefined,
         sunset: undefined,
         windSpeed: undefined,
+        windDeg: undefined,
         error: data.message
       });
     }
@@ -88,9 +111,11 @@ class App extends Component {
                     temperature={this.state.temperature}
                     humidity={this.state.humidity}
                     cloudiness={this.state.cloudiness}
+                    icon={this.state.icon}
                     sunrise={this.state.sunrise}
                     sunset={this.state.sunset}
                     windSpeed={this.state.windSpeed}
+                    windDeg={this.state.windDeg}
                     error={this.state.error}
                 />
           </div>
