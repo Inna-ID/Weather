@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Titles from './components/Titles';
 import Form from './components/Form';
 import Weather from './components/Weather';
+import TemperatureUnit from './components/TemperatureUnit';
 import './App.css';
 
 const apiKey = 'e1df1fc3a72e0ced10d2e8bac9563a73';
@@ -18,8 +19,24 @@ class App extends Component {
     sunset: undefined,
     windSpeed: undefined,
     windDeg: undefined,
-    error: undefined
+    error: undefined,
+    isCelsius: true,
   }
+
+
+  autoCopmlete = () => {
+    // let mapApiUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBu_KZxeeOWKC1tnynobv1-ef7TD-qCNiM&libraries=places'; 
+    // fetch(mapApiUrl).then(resp => resp.text())
+    // .then(contents => console.log(contents))
+    // .catch(() => console.log("can't acces url"));
+    
+    // const apiCity = await fetch(`https://maps.googleapis.com/maps/api/js?key=AIzaSyBu_KZxeeOWKC1tnynobv1-ef7TD-qCNiM&libraries=places`);
+    // const data1 = await apiCity.json(); // перевод полученной инфы в формат json
+    // console.log(data1);
+
+    console.log('changing...')
+  }
+
 
   gettingWeather = async (e) => {
     e.preventDefault();
@@ -64,6 +81,13 @@ class App extends Component {
       let sunsetMinutes = setZero(dateSunset.getMinutes());
       let sunsetSeconds = setZero(dateSunset.getSeconds());
       let sunsetTime = `${sunsetHours} : ${sunsetMinutes} : ${sunsetSeconds}`;
+
+      //unit 
+      // if(this.state.isCelsius) {
+      //   this.setState({temperature: data.main.temp})
+      // } else {
+      //   this.setState({temperature: data.main.temp * 2})
+      // }
       
 
       this.setState({
@@ -96,6 +120,11 @@ class App extends Component {
     }
   }
 
+  // recountDegrees = () => {
+  //   this.setState({isCelsius: !this.state.isCelsius});
+  //   // console.log(this.state.temperature* 9/5 + 32);
+  // }
+
   render() {
     return (
       <div className="wrapper sky">
@@ -103,8 +132,9 @@ class App extends Component {
         <div className="mountains"></div>
         <div className="main">
         <div className="container">
+                <TemperatureUnit recountDegrees={this.recountDegrees}/>
                 <Titles/>
-                <Form weatherMethod={this.gettingWeather}/>
+                <Form weatherMethod={this.gettingWeather} autoCopmlete={this.autoCopmlete}/>
                 <Weather
                     city={this.state.city}
                     country={this.state.country}

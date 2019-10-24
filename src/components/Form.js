@@ -4,7 +4,7 @@ class Form extends Component {
     render() {
         return(
             <form onSubmit={this.props.weatherMethod}>
-                <input type="text" name="city" placeholder="City"/>
+                <input onChange={this.props.autoCopmlete} type="text" name="city" placeholder="City"/>
                 <button className="btn btn-danger">Get the weather</button>
             </form>
         )

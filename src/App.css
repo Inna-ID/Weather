@@ -190,6 +190,67 @@ p {
   font-size: 3em;
 }
 
+
+/* TemperatureUnit */
+.temperature-unit-block {
+  display: flex;
+  /* width: 90px; */
+  margin-bottom: 50px;
+
+}
+.unit-wrap {
+
+}
+
+.unit-wrap input {
+  transform: scale(2.5);
+}
+/* .temperature-unit-block input {
+  position: absolute;
+  left: -9999px;
+}
+.temperature-unit-block label {
+  display: inline-block;
+  position: relative;
+  font-size: 1.25em;
+  background: rgba(142, 173, 206, .35);
+  width: 45px;
+  height: 30px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  transition: .35s ease-in-out;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, .35);
+  cursor: pointer;
+}
+.temperature-unit-block #unit_c + label {
+  border-radius: 5px 1px 1px 5px;
+}
+.temperature-unit-block #unit_f + label {
+  border-radius: 1px 5px 5px 1px;
+}
+.temperature-unit-block input:checked + label {
+  background: #8eadce;
+  box-shadow: none;
+  transition: .5s ease-in-out;
+}
+
+.temperature-unit-block input + label:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 2px;
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, .75) 50%, rgba(255, 255, 255, .05) 100%);
+  box-shadow: 0px 1px 4px rgba(255, 255, 255, 0.5);
+  transition: .5s ease-in-out;
+  opacity: 0;
+}
+
+.temperature-unit-block input:checked + label:before {
+  opacity: 1;
+} */
+
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
