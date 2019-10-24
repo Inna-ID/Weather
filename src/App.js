@@ -20,9 +20,7 @@ class App extends Component {
     windSpeed: undefined,
     windDeg: undefined,
     error: undefined,
-    isCelsius: true,
   }
-
 
   autoCopmlete = () => {
     // let mapApiUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBu_KZxeeOWKC1tnynobv1-ef7TD-qCNiM&libraries=places'; 
@@ -131,11 +129,11 @@ class App extends Component {
         <div className="stars"></div>
         <div className="mountains"></div>
         <div className="main">
-        <div className="container">
-                <TemperatureUnit recountDegrees={this.recountDegrees}/>
-                <Titles/>
-                <Form weatherMethod={this.gettingWeather} autoCopmlete={this.autoCopmlete}/>
-                <Weather
+          <div className="container">
+            <TemperatureUnit/>
+            <Titles/>
+            <Form weatherMethod={this.gettingWeather} autoCopmlete={this.autoCopmlete}/>
+            <Weather
                     city={this.state.city}
                     country={this.state.country}
                     temperature={this.state.temperature}
@@ -147,7 +145,7 @@ class App extends Component {
                     windSpeed={this.state.windSpeed}
                     windDeg={this.state.windDeg}
                     error={this.state.error}
-                />
+            />
           </div>
         </div>
       </div>
