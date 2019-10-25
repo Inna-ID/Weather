@@ -7,31 +7,30 @@ class TemperatureUnit extends Component {
 
 
     onChangeHendler = (e) => {
-        this.setState = ({
-            isCelsius: e.target.value
-        })
+        //var raaa = e.target.childNodes.name;
+        let ch = e.target.checked;
+        let val = e.target.value;
+        console.log(ch);
+        console.log(val);
+    }
+
+    onChangeHendler2 = (e) =>  {
+        this.setState ({isCelsius: e.target.value})
         console.log(this.state.isCelsius);
     }
 
     render() {
         return(
-            <div className="temperature-unit-block">
-                {/* <span className="unit-wrap">
-                    <input id='unit_c' type="radio" name="unit" className="unit active" defaultChecked/>
-                    <label htmlFor="unit_c">°C</label>
-                </span>
-                <span className="unit-wrap">
-                    <input id='unit_f' type="radio" name="unit" className="unit"/>
-                    <label htmlFor="unit_f">°F</label>
-                </span> */}
-
-            <span className="unit-wrap">
+            <label htmlFor="unit-switch" className="unit-wrap">
                 {/* <input onChange={this.props.recountDegrees} id="unit-switch" type="checkbox" defaultChecked/> */}
-                {/* <input id="unit-switch" type="checkbox" checked={this.state.isCelsius}/> */}
-                <input onChange={this.onChangeHendler} value={this.state.isCelsius} type="text" placeholder="enter..."/>
-            </span>
-
-            </div>
+                <input onChange={this.onChangeHendler} id="unit-switch" type="checkbox"/>
+                <p>
+                    <span id="metric-unit">°C</span>
+                    <span id="imperial-unit">°F</span>
+                </p>
+                <a className="slide-button"></a>
+                {/* <input id="mz" onChange={this.onChangeHendler2} value={this.state.isCelsius}/> */}
+            </label>
         );
     }
 }

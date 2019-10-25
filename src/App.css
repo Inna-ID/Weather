@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -155,9 +156,7 @@ button:hover:before {
 }
 
 
-.weather-info {}
-
-p {
+.weather-info p {
   font-size: 1.125em;
   margin: 15px 0;
 }
@@ -181,75 +180,69 @@ p {
   align-items: center;
 }
 
-.location {
+.main-info .location {
   font-size: 1.8em;
 }
 
-.temperature {
+.main-info .temperature {
   margin-left: 30px;
   font-size: 3em;
 }
 
 
 /* TemperatureUnit */
-.temperature-unit-block {
-  display: flex;
-  /* width: 90px; */
-  margin-bottom: 50px;
-
-}
 .unit-wrap {
-
+  position: relative;
+  display: flex;
+  width: 100px;
+  margin-bottom: 50px;
+  background: rgba(45, 48, 53, .5);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.3), 0 1px 0 hsla(0,0%,100%,.2);
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .unit-wrap input {
-  transform: scale(2.5);
-}
-/* .temperature-unit-block input {
   position: absolute;
   left: -9999px;
 }
-.temperature-unit-block label {
+
+#mz {
+  width: 300px;
+  border-bottom: 2px solid #fff;
+  position: relative;
+  left: 40px;
+}
+
+.unit-wrap p span {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  color: #fff;
+  font-weight: 600;
+  z-index: 2;
+}
+.unit-wrap p span:last-child {
+  left: 58px;
+}
+
+.unit-wrap .slide-button {
   display: inline-block;
   position: relative;
   font-size: 1.25em;
-  background: rgba(142, 173, 206, .35);
-  width: 45px;
+  background: linear-gradient(to bottom,#8eadce, #84a4c5);
+  width: 50px;
   height: 30px;
   padding: 3px 7px;
-  border-radius: 5px;
+  border-radius: 3px;
   transition: .35s ease-in-out;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, .35);
-  cursor: pointer;
+  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, .25);
 }
-.temperature-unit-block #unit_c + label {
-  border-radius: 5px 1px 1px 5px;
-}
-.temperature-unit-block #unit_f + label {
-  border-radius: 1px 5px 5px 1px;
-}
-.temperature-unit-block input:checked + label {
-  background: #8eadce;
-  box-shadow: none;
-  transition: .5s ease-in-out;
+.unit-wrap input:checked~.slide-button {
+  margin-left: 50px;
 }
 
-.temperature-unit-block input + label:before {
-  position: absolute;
-  content: '';
-  top: 0;
-  right: 2px;
-  width: 20px;
-  height: 1px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, .75) 50%, rgba(255, 255, 255, .05) 100%);
-  box-shadow: 0px 1px 4px rgba(255, 255, 255, 0.5);
-  transition: .5s ease-in-out;
-  opacity: 0;
-}
 
-.temperature-unit-block input:checked + label:before {
-  opacity: 1;
-} */
 
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;

@@ -48,14 +48,14 @@ class App extends Component {
       ///wind derection
       const setWidDerection = deg => {
         switch(true) {
-          case (deg >= 350 && deg <= 10): return 'Eastern ⭠';
+          case (deg >= 350 && deg <= 10): return 'Northern ⭣';
           case (deg > 10 && deg < 80): return 'Northeastern ⭩';
-          case (deg >= 80 && deg <= 100): return 'Northern ⭣';
-          case (deg > 100 && deg < 170): return 'Northwestern ⭨';
-          case (deg >= 170 && deg <= 190): return 'Western ⭢';
+          case (deg >= 80 && deg <= 100): return 'Eastern ⭠';
+          case (deg > 100 && deg < 170): return 'Southeastern ⭦';
+          case (deg >= 170 && deg <= 190): return 'Southern ⭡';
           case (deg > 190 && deg < 260): return'Southwestern ⭧';
-          case (deg >= 260 && deg <= 280): return 'Southern ⭡';
-          case (deg > 280 && deg < 350): return 'Southeastern ⭦';
+          case (deg >= 260 && deg <= 280): return 'Western ⭢';
+          case (deg > 280 && deg < 350): return 'Northwestern ⭨';
           default: return '';
         }
       }
